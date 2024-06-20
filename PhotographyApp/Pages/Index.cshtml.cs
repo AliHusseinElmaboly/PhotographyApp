@@ -1,20 +1,32 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using PhotoApp.Models;
+using PhotographyApp.Services;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace PhotographyApp.Pages
 {
     public class IndexModel : PageModel
     {
-        private readonly ILogger<IndexModel> _logger;
+        private readonly IPhotoService _photoService;
 
-        public IndexModel(ILogger<IndexModel> logger)
+        public IndexModel(IPhotoService photoService)
         {
-            _logger = logger;
+            _photoService = photoService;
         }
 
-        public void OnGet()
-        {
+        public IEnumerable<Photo> Photos { get; set; }
 
+        public async Task OnGetAsync()
+        {
+            Photos = await _photoService.GetPhotosAsync();
+        }
+
+        public async Task<IActionResult> OnPostDeleteAsync(int id)
+        {
+            await _photoService.DeletePhotoAsync(id);
+            return RedirectToPage();
         }
     }
 }

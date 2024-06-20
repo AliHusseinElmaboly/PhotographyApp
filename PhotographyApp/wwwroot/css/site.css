@@ -1,22 +1,130 @@
-html {
-  font-size: 14px;
-}
-
-@media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
-}
-
-.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
-  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
-}
-
-html {
-  position: relative;
-  min-height: 100%;
-}
-
+/* General Styles */
 body {
-  margin-bottom: 60px;
+    font-family: Arial, sans-serif;
+    background-color: #f8f9fa;
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+h1 {
+    margin: 20px 0;
+    font-size: 2.5em;
+    text-align: center;
+}
+
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+/* Table Styles */
+.table {
+    width: 100%;
+    margin-top: 20px;
+    border-collapse: collapse;
+}
+
+    .table th, .table td {
+        padding: 12px 15px;
+        border: 1px solid #dee2e6;
+        text-align: left;
+        vertical-align: middle;
+    }
+
+    .table th {
+        background-color: #e9ecef;
+    }
+
+    .table td img {
+        max-width: 100px;
+        height: auto;
+        border-radius: 4px;
+    }
+
+/* Button Container */
+.button-container {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+}
+
+/* Button Styles */
+.btn {
+    padding: 8px 12px;
+    font-size: 1em;
+    border-radius: 4px;
+    text-align: center;
+    cursor: pointer;
+    transition: background-color 0.3s, border-color 0.3s, box-shadow 0.3s;
+}
+
+.btn-primary {
+    background-color: #007bff;
+    border: 1px solid #007bff;
+    color: #fff;
+}
+
+    .btn-primary:hover {
+        background-color: #0056b3;
+        border-color: #004085;
+        box-shadow: 0 0 10px rgba(0, 86, 179, 0.5);
+    }
+
+.btn-danger {
+    background-color: #dc3545;
+    border: 1px solid #dc3545;
+    color: #fff;
+}
+
+    .btn-danger:hover {
+        background-color: #bd2130;
+        border-color: #b21f2d;
+        box-shadow: 0 0 10px rgba(189, 33, 48, 0.5);
+    }
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .btn {
+        font-size: 0.9em;
+        padding: 6px 10px;
+    }
+
+    .table td img {
+        max-width: 80px;
+    }
+
+    .button-container {
+        flex-direction: column;
+        align-items: stretch;
+    }
+}
+
+@media (max-width: 480px) {
+    .btn {
+        font-size: 0.8em;
+        padding: 5px 8px;
+    }
+
+    .table th, .table td {
+        padding: 8px;
+        font-size: 0.8em;
+    }
+
+    .container {
+        padding: 10px;
+    }
+}
+
+/* No Photos Found Message */
+.no-photos {
+    text-align: center;
+    font-size: 1.2em;
+    color: #6c757d;
+    margin-top: 20px;
 }

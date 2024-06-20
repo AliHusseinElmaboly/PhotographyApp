@@ -1,10 +1,52 @@
 ﻿@page
 @model IndexModel
 @{
-    ViewData["Title"] = "Home page";
+    ViewData["Title"] = "Photo Gallery";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome on Azure</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+<h1>Photo Gallery</h1>
+
+<p>
+    <a asp-page="Upload">Upload New Photo</a>
+</p>
+
+@if (Model.Photos.Any())
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Image</th>
+
+                <th>Title</th>
+                <th>Description</th>
+                <th>Upload Date</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var photo in Model.Photos)
+            {
+                <tr>
+                    <td><img src="@photo.FilePath" alt="@photo.Title"/></td>
+
+                    <td>@photo.Title</td>
+                    <td>@photo.Description</td>
+                    <td>@photo.UploadDate.ToString("yyyy-MM-dd HH:mm")</td>
+                 
+                    <td>
+                        <div class="button-container">
+                            <form method="post" asp-page-handler="Delete" asp-route-id="@photo.Id">
+                                <button type="submit" class="btn btn-danger">Delete</button>
+                            </form>
+                            <a asp-page="Edit" asp-route-id="@photo.Id" class="btn btn-primary"> Edit </a>
+                        </div>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <p>No photos found.</p>
+}
