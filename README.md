@@ -25,7 +25,8 @@ To run the Photography App locally and execute unit tests, follow the steps belo
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/AliHusseinElmaboly/PhotographyApp
+   git clone --branch master https://github.com/AliHusseinElmaboly/PhotographyApp.git
+
    cd PhotographyApp
 2- Ensure the Photography.db is created in the root directory or add migration for database
 
