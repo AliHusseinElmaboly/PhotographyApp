@@ -2,8 +2,6 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using PhotoApp.Models;
 using PhotographyApp.Services;
-using System.Collections.Generic;
-using System.Threading.Tasks;
 
 namespace PhotographyApp.Pages
 {

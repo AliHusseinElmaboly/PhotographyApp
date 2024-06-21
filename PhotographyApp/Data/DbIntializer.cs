@@ -1,8 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.DependencyInjection;
 using PhotoApp.Models;
-using System;
-using System.Linq;
 
 namespace PhotoApp.Data
 {
@@ -24,6 +21,13 @@ namespace PhotoApp.Data
 
                 var photos = new Photo[]
                 {
+                     new Photo
+                    {
+                        Title = "saal Digital",
+                        Description = "High-quality photo products",
+                        FilePath = "https://www.saal-digital.es/fileadmin/sg-saal/css/logo_saal.svg",
+                        UploadDate = DateTime.Now
+                    },
                     new Photo
                     {
                         Title = "Sample Photo 1",
@@ -38,7 +42,6 @@ namespace PhotoApp.Data
                         FilePath = "https://th.bing.com/th/id/OIP.Hz3M3lyiuWM5nDaGvibPMQHaGM?w=238&h=199&c=7&r=0&o=5&dpr=1.3&pid=1.7", // Adjust as per your file structure
                         UploadDate = DateTime.Now
                     }
-                    // Add more photos as needed
                 };
 
                 context.Photos.AddRange(photos);

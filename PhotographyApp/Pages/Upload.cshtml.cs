@@ -3,9 +3,6 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using PhotoApp.Models;
 using PhotographyApp.Services;
-using System;
-using System.IO;
-using System.Threading.Tasks;
 
 namespace PhotographyApp.Pages
 {
@@ -25,7 +22,7 @@ namespace PhotographyApp.Pages
         {
             public string Title { get; set; }
             public string Description { get; set; }
-            public IFormFile PhotoFile { get; set; }
+            public string PhotoUrl { get; set; }
         }
 
         public async Task<IActionResult> OnPostAsync()
@@ -40,16 +37,8 @@ namespace PhotographyApp.Pages
                 Title = Input.Title,
                 Description = Input.Description,
                 UploadDate = DateTime.UtcNow, 
-                FilePath = Input.PhotoFile.FileName
+                FilePath = Input.PhotoUrl
             };
-
-            if (Input.PhotoFile != null && Input.PhotoFile.Length > 0)
-            {
-                var fileName = $"{Guid.NewGuid().ToString()}{Path.GetExtension(Input.PhotoFile.FileName)}";
-                var filePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "uploads", fileName);
-
-                photo.FilePath = $"/uploads/{fileName}";
-            }
 
             await _photoService.AddPhotoAsync(photo);
 
